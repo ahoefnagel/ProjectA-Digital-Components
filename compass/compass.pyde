@@ -11,7 +11,7 @@ compass = None
 arrow = None
 
 def setup():
-    global compass, arrow, zigBlack
+    global compass, arrow
     size(840, 620, P3D)
     compass = loadImage("windroos.jpg")
     arrow = loadImage("arrow2.png")
@@ -22,7 +22,7 @@ def draw():
     fill(0)
     # Check if the arrow is slowing down, if so, decrease the rotation 
     if is_slowing:
-        rotation_speed -= 0.03
+        rotation_speed -= 0.05
     else:
         rotation_speed += deg
 
@@ -36,10 +36,10 @@ def draw():
         # Check at which side the compass has landed and display it on to the screen
         for comp in nesw:
             if rot > comp['min'] and rot < comp['max']:
-                text('The location is: ' + comp['location'], width/4, 32)
+                text('The location is: ' + comp['location'], width/2, 24)
                 break
             elif (comp['location'] == 'North' and rot > comp['min']) or (comp['location'] == 'North' and rot < comp['max']):
-                text('The location is: ' + comp['location'], width/4, 32)
+                text('The location is: ' + comp['location'], width/2, 24)
                 break
 
     rotation += rotation_speed
