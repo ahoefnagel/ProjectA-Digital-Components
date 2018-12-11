@@ -11,11 +11,11 @@ compass = None
 arrow = None
 
 def setup():
-    global compass, arrow
+    global compass, arrow, zigBlack
     size(840, 620, P3D)
     compass = loadImage("windroos.jpg")
     arrow = loadImage("arrow2.png")
-
+      
 def draw():
     global compass, arrow, rotation_speed, rotate_counter, is_slowing, rotation, nesw
     background(255)
@@ -53,9 +53,14 @@ def draw():
     popMatrix()
     
     # Draw the 'SPIN!' button
+    pushMatrix()
     rect(0, 0, 80, 20)
+    textAlign(CENTER, CENTER)
     fill(255)
-    text('SPIN!', 30, 15)
+    strokeWeight(4)
+    textSize(16)
+    text('SPIN!', 0, 0, 80, 20)
+    popMatrix()
     
 # Check if the mouse is pressed
 def mousePressed():
