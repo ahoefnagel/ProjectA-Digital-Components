@@ -5,7 +5,6 @@ dice = { 1: [[None, None, None], [None, "", None], [None, None, None]],
         4: [["", None, ""], [None, None, None], ["", None, ""]],
         5: [["", None, ""], [None, "", None], ["", None, ""]],
         6: [["", None, ""], ["", None, ""], ["", None, ""]]}
-
 dice_cnt = 3
 
 def setup():
@@ -26,7 +25,7 @@ def draw():
     clear()
     fill(255)
     rect(0, 0, width, height)
-
+        
     if dice_no == []:
         pushMatrix()
         fill(0)
@@ -36,7 +35,7 @@ def draw():
         popMatrix()
         
         
-    basex = 35
+    basex = 35 + width/2 - (dice_cnt * 130) / 2
     if debug:
         basey = 60
     else:
