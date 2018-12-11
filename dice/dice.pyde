@@ -12,31 +12,33 @@ def setup():
     dice_no = None
     score = 0
     count = 0
-    debug = False
-    size(220, 150)
+    debug = True
+    size(220, 155)
 
     
 def draw():
     global dice_no, score, count
     # Clear the previous draws on the screen
     clear()
+    fill(255)
+    rect(0, 0, width, height)
     
-    basex = 30
+    basex = 35
     if debug:
         basey = 60
     else:
         basey = 30
         
     # Fill the whole field with color x
-    fill(120, 134, 240)
+    fill(232, 227, 218)
     # Draw a rect, this will be the dice
-    rect(basex-30, basey-30, 120, 120)
+    rect(basex-30, basey-30, 120, 120, 12, 12, 12, 12)
     if dice_no != None:
         for y in range(len(dice[dice_no])):
             for x in range(len(dice[dice_no][y])):
                 if dice[dice_no][y][x] != None:
                     # Draw the eye's of the dice, in the desired color
-                    fill(220)
+                    fill(0)
                     ellipse(basex + (x * 30), basey + (y * 30), 20, 20)
     if debug:
         text("score: " + str(score) + " - Count: " + str(count) + " - Dice_No: " + str(dice_no), 0, 20)
