@@ -6,7 +6,7 @@ dice = { 1: [[None, None, None], [None, "", None], [None, None, None]],
         5: [["", None, ""], [None, "", None], ["", None, ""]],
         6: [["", None, ""], ["", None, ""], ["", None, ""]]}
 
-dice_cnt = 2
+dice_cnt = 3
 
 def setup():
     # Variable initialization
@@ -20,13 +20,22 @@ def setup():
     
 def draw():
     global dice_no, score, count
+    textAlign(TOP, LEFT)
+    textSize(12)    
     # Clear the previous draws on the screen
     clear()
     fill(255)
     rect(0, 0, width, height)
-    
-    print(dice_no)
-    
+
+    if dice_no == []:
+        pushMatrix()
+        fill(0)
+        textAlign(CENTER, CENTER)
+        textSize(8*dice_cnt)
+        text("Click anywhere to roll the dice!", width/2, height/2)
+        popMatrix()
+        
+        
     basex = 35
     if debug:
         basey = 60
@@ -46,7 +55,7 @@ def draw():
                         # Draw the eye's of the dice, in the desired color
                         fill(0)
                         ellipse(bx + (x * 30), basey + (y * 30), 20, 20)
-    if debug:
+    if debug and dice_no != []:
         text("score: " + str(score) + " - Count: " + str(count) + " - Dice_No: " + str(dice_no), 0, 20)
     
 def mousePressed():
